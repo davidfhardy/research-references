@@ -1,0 +1,73 @@
+\documentclass[14pt]{extreport}
+
+\input{preamble}
+
+% -----------------------------------------------------
+% PDF Title
+\hypersetup{
+    pdftitle={References}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\setsansfont{Poppins}[
+    Path=./fonts/Poppins/,
+    Scale = 1,
+    Extension = .ttf,
+    UprightFont=*-Regular,
+    BoldFont=*-SemiBold,
+    ItalicFont=*-Italic,
+    BoldItalicFont=*-BoldItalic
+    ]
+
+\thispagestyle{empty}
+% ---------- TITLE PAGE ---------- %
+\begin{titlepage}
+    \centering
+    % \includegraphics[width=0.3\textwidth]{images/Carleton Logo (Cropped).png} % Include your logo here
+    % \vskip 1cm
+    % {\scshape\LARGE Carleton University \par}
+    % \vspace{1cm}
+    % {\scshape\Large MARS Research Group \par}
+    \vspace*{4cm}
+    {\Huge\bfseries\sffamily Research Paper \\ Reference Library \par}
+    \vspace{0.5cm}
+    {\large \textsl{A document summarizing basic concepts and research papers in electromagnetics, metasurfaces, antennas, and RF/microwave engineering} \par}
+    \vfill
+    {Source code of this document is hosted on GitHub:} \\
+    \url{https://github.com/davidhardy/LaTeX} \\[1cm]
+    {Document created by David Hardy} \\ 
+    {\today} 
+\end{titlepage}
+
+% -------------------------------------- %
+% Table of Contents
+% -------------------------------------- %
+\tableofcontents
+\thispagestyle{empty}
+
+\clearpage
+\pagenumbering{arabic}
+
+% --- Antennas 
+\input{sections/antennas}
+
+% --- Metasurfaces 
+\input{sections/metasurfaces}
+
+% --- RF and Microwaves 
+\input{sections/rfandmicrowaves}
+
+% --- Bibliography
+\renewcommand*{\bibfont}{\small}
+\printbibliography
+
+
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% END DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

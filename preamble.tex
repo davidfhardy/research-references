@@ -1,0 +1,289 @@
+% \usepackage[utf8]{inputenc} % ignore with LuaLaTeX
+
+% **********************************************************
+%                        PACKAGES
+% **********************************************************
+
+\usepackage[letterpaper, hmargin=1.5cm, top=3cm, bottom=2cm, headheight=17pt, headsep=1cm]{geometry}
+\usepackage{blindtext}  % for creating random paragraphs
+\usepackage{fancyhdr}   % for header and footer
+\usepackage{titlesec}   % formats section titles 
+\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\usepackage[bitstream-charter]{mathdesign} % alternative nice font 
+\usepackage{amsmath}    % math package
+%\usepackage{amssymb}   
+\usepackage{amsthm}     % math theorems
+\usepackage{empheq}     % emphasizing/boxing equations
+\usepackage{textcomp}   % load this before gensym to avoid warnings
+\usepackage{gensymb}    % general symbols
+\usepackage{enumitem}   % formatting enumerate and itemize environments
+\usepackage{graphicx}   % for figures/images
+\usepackage{longtable}  % for allowing tables to span onto another page
+\usepackage{wrapfig}    % 
+\usepackage{float}      % making figures floats with [H]
+\usepackage{multicol, multirow} % to make multiple columns/rows
+\usepackage{caption}    % formatting figure/table captions
+\usepackage{hyperref}   % formmatting hyperlinks and other links
+\usepackage{setspace}   
+\usepackage{siunitx}    
+\usepackage[framemethod=TikZ]{mdframed} 
+\usepackage{thmtools}
+\usepackage[nottoc,notlot,notlof]{tocbibind}    
+\usepackage[toc, titletoc]{appendix}
+\usepackage{listings}
+%\usepackage{subfigure}
+\usepackage{subcaption}
+\usepackage{parskip}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,xparse,breakable}
+
+\usepackage[customcolors]{hf-tikz}
+\usepackage{chngcntr} % change counter
+\usepackage{esint} % for drawing [closed] integral symbols, like \oiint
+\usepackage{titling} % for title page
+\usepackage{steinmetz} % for angle symbols with phasors
+\usepackage{lastpage}
+
+\usepackage[style=ieee]{biblatex}
+\addbibresource{references.bib} %Import the bibliography file
+
+
+% for calligraphy letters. 
+% e.g. {\calligra E}
+%\usepackage{calligra} 
+%\usepackage{mathrsfs}
+\usepackage[scr=boondoxo]{mathalpha}
+%\usepackage[scr=boondox, cal=rsfs]{mathalpha}
+
+\usepackage{minted}
+
+% *************************************************************
+%  FONTS
+% *************************************************************
+
+
+% *************************************************************
+%  COLOURS
+% *************************************************************
+\definecolor{navyblue}{rgb}{0.0, 0.0, 0.5}
+\definecolor{persianblue}{rgb}{0.11, 0.22, 0.73}
+\definecolor{pumpkin}{rgb}{1.0, 0.46, 0.09}
+\definecolor{harvardcrimson}{rgb}{0.79, 0.0, 0.09}
+\definecolor{forestgreen}{rgb}{0.13, 0.55, 0.13}
+\definecolor{blue-violet}{rgb}{0.54, 0.17, 0.89}
+
+\definecolor{figColour}{RGB}{65,105,225}
+\definecolor{itColour}{RGB}{220,20,60}
+%\definecolor{eqnRef}{RGB}{0, 155, 93} 
+\definecolor{eqnRef}{rgb}{0.13, 0.55, 0.13}
+\definecolor{violetBlue}{HTML}{551ADE}
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+
+% *************************************************************
+%  MATH DEFINITIONS 
+% *************************************************************
+\renewcommand{\vec}[1]{\boldsymbol{\mathrm{#1}}}
+\newcommand{\uvec}[1]{\boldsymbol{{\mathrm{\hat{#1}}}}}
+\renewcommand{\Re}{\boldsymbol{\mathscr{R} \hspace{-3pt} \mathscr{e}}}
+\renewcommand{\Im}{\boldsymbol{\mathscr{I} \hspace{-3pt} \mathscr{m}}}
+\newcommand{\phasor}[1]{\widetilde{#1}}
+\newcommand{\vecphasor}[1]{\widetilde{\mathbf{#1}}}
+\newcommand{\timevec}[1]{\bar{\mathscr{#1}}}
+\newcommand{\divergence}{\nabla\cdot}
+\newcommand{\curl}{\nabla\times}
+
+
+\newcommand{\rthetaphi}{(r,\theta,\phi)}
+\newcommand{\thetaphi}{(\theta,\phi)}
+\newcommand{\Efield}{\vec{E}(\vec{r})}
+\newcommand{\Hfield}{\vec{H}(\vec{r})}
+
+\newcommand{\txtin}{\mathrm{in}}
+\newcommand{\txtinc}{\mathrm{inc}}
+\newcommand{\txtavg}{\mathrm{avg}}
+\newcommand{\txtrad}{\mathrm{rad}}
+\newcommand{\txtloss}{\mathrm{loss}}
+\newcommand{\txtrefl}{\mathrm{refl}}
+\newcommand{\txtant}{\mathrm{ant}}
+\newcommand{\txtco}{\mathrm{co}}
+\newcommand{\txtcr}{\mathrm{cr}}
+\newcommand{\txtdb}{\mathrm{dB}}
+\newcommand{\txtpo}{\mathrm{PO}}
+\newcommand{\txtmax}{\mathrm{max}}
+\newcommand{\txtmin}{\mathrm{min}}
+
+% *************************************************************
+%  CUSTOM COMMANDS
+% *************************************************************
+\newcommand{\coltextit}[1]{\textbf{\textit{\color{itColour}{#1}}}}
+\newcommand{\paperitem}[1]{\textit{\cite{#1} \citefield{#1}{title} (\citefield{#1}{year})}}
+
+% *************************************************************
+% MY COUNTERS
+% *************************************************************
+\renewcommand{\thefigure}{\arabic{figure}}
+
+\newcommand*{\refeqn}[1]{%
+  \begingroup
+    \hypersetup{
+      linkcolor=eqnRef,
+      linkbordercolor=eqnRef,
+    }%
+    \textcolor{eqnRef}{Eq.\ (\ref{#1})}%
+  \endgroup
+}
+
+% *************************************************************
+% HYPERLINK SETUP
+% *************************************************************
+\urlstyle{texttt}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,  
+    citecolor=black,
+    urlcolor=black
+}
+   
+% *************************************************************
+% HEADERS AND FOOTERS
+% *************************************************************
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.5pt}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{\markboth{{#1}}{}}
+\lhead{\textsl{\chaptertitlename \ \thechapter. \leftmark}}
+\rhead{\thepage \ of \pageref{LastPage}}
+\cfoot{}
+
+% *************************************************************
+% SECTIONS/CHAPTERS
+% *************************************************************
+
+% Sections
+\titleformat{\section}
+   {\Large\bfseries\sffamily}{\thesection}{0.5em}{}
+\titleformat{\subsection}
+   {\large\bfseries\sffamily}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}
+   {\normalsize\bfseries}{\thesubsubsection}{0.5em}{}
+%\newcommand{\sectionbreak}{\clearpage} % adds new page for each section
+% Chapter
+% \titleformat{\chapter}[frame]
+% {\normalfont}
+% {\filcenter
+% \Large
+% \enspace \bfseries \textcolor{harvardcrimson}{\textit{\chaptertitlename\ \thechapter}}
+% }
+% {8pt}
+% {\huge\bfseries\filcenter}
+\renewcommand{\chaptertitlename}{Section}
+
+\titleformat{\chapter}[display]
+{\bfseries\Large\sffamily}
+{\filleft\MakeUppercase{\chaptertitlename} \Huge\thechapter}
+{0.5cm}
+{\titlerule[2pt]\LARGE
+\vspace{0.5cm}%
+\centering}
+[\vspace{0.5cm}%
+{\titlerule[2pt]} ]
+
+\titlespacing*{\chapter}{0pt}{-30pt}{20pt}
+
+
+% *************************************************************
+% PARAGRAPHS AND LISTS/ENUMERATE
+% *************************************************************
+\setlist{partopsep=0pt, topsep=-5pt, itemsep=-7pt, after=\vspace{0.25cm}} % Customize spacing around and inside lists
+\setlist[itemize]{label=\footnotesize$\blacksquare$}
+
+% *************************************************************
+% FIGURES AND TABLES
+% *************************************************************
+
+% Figure/Table counters
+\counterwithin{figure}{chapter}
+\counterwithin{table}{chapter}
+
+% Figures caption formatting
+\captionsetup{%
+  figurename=Fig.,
+  tablename=Tab., 
+  labelfont={bf,color=black}, 
+  font={small, sl}
+}
+
+% Tables
+\def\arraystretch{1.5}
+
+% *************************************************************
+% EQUATIONS
+% *************************************************************
+
+\allowdisplaybreaks
+\counterwithin{equation}{chapter}
+
+% *************************************************************
+% MDFRAMED
+% *************************************************************
+\mdfsetup{leftmargin=0, rightmargin=0, innertopmargin=3pt, innerbottommargin=3pt}
+\mdfdefinestyle{equation}{backgroundcolor=green!10, linecolor=green!10}
+\mdfdefinestyle{equations}{backgroundcolor=green!10, linecolor=green!10, innertopmargin=-10pt}
+
+% Equation boxes
+\hfsetfillcolor{green!10}
+\hfsetbordercolor{green!50!black}
+
+\definecolor{eqnGreen}{rgb}{.8, 1, .8}
+\newcommand*\eqnGreenBox[1]{%
+\colorbox{eqnGreen}{\hspace{1em}#1\hspace{1em}}}
+\setlength{\fboxsep}{0.5em}
+
+\theoremstyle{definition}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{persianblue!90!black}, bodyfont=\normalfont,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=persianblue, backgroundcolor=persianblue!5,
+    }
+]{examplebox}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{pumpkin!90!black}, bodyfont=\normalfont,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=pumpkin, backgroundcolor=pumpkin!5,
+    }
+]{notebox}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{blue-violet!90!black}, bodyfont=\normalfont,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=blue-violet, backgroundcolor=blue-violet!5,
+    }
+]{proofbox}
+
+\declaretheorem[style=examplebox, numberwithin=chapter, name=Example]{example}
+\declaretheorem[style=notebox, numbered=no, name=Note]{note}
+\declaretheorem[style=proofbox, numberwithin=chapter, name=Proof]{proofBox}
+
+
+
+
+
+
+
